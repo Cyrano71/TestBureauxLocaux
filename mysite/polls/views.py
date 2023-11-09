@@ -25,9 +25,14 @@ def login(request):
     password = body['password']
     user = authenticate(username=username, password=password)
     if user is not None:
-        return HttpResponse({"token": cutom_token}, content_type="application/json")
+        response = HttpResponse({"token": cutom_token}, content_type="application/json")
     else:
-        return HttpResponse('Unauthorized', status=401)
+        response = HttpResponse('Unauthorized', status=401)
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+    return response
 
 def detail(request, pk):
     if guard(request):

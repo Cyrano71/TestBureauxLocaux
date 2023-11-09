@@ -3,6 +3,10 @@
 dump/
 local_volumes/
 
+node_modules
+package-lock.json
+build
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
