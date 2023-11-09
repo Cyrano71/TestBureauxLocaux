@@ -10,13 +10,21 @@ def guard(request):
         return True
     return False
 
+import datetime 
+  
+# Define a custom function to serialize datetime objects 
+def serialize_datetime(obj): 
+    if isinstance(obj, datetime.datetime): 
+        return obj.isoformat() 
+    raise TypeError("Type not serializable") 
+    
 def index(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
-    latest_realstate_list = RealEstate.objects.order_by("-pub_date")[:5]
-    data = list(latest_realstate_list.values())
-    print(data)
-    return HttpResponse(data, content_type="application/json")
+    latest_realstate_list = RealEstate.objects.order_by("-pub_date")[:5].only("pk")
+    data = latest_realstate_list.values_list('pk', flat=True) #list(latest_realstate_list.values())
+    data = list(data)
+    return HttpResponse(json.dumps(data), content_type="application/json")
     
 def login(request):
     body_unicode = request.body.decode('utf-8')
@@ -25,20 +33,20 @@ def login(request):
     password = body['password']
     user = authenticate(username=username, password=password)
     if user is not None:
-        response = HttpResponse({"token": cutom_token}, content_type="application/json")
+        response = HttpResponse(json.dumps({"token" : cutom_token}), content_type="application/json")
     else:
         response = HttpResponse('Unauthorized', status=401)
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+    #response["Access-Control-Allow-Origin"] = "*"
+    #response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    #response["Access-Control-Max-Age"] = "1000"
+    #response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
     return response
 
 def detail(request, pk):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
     data = RealEstate.objects.filter(pk=pk)
-    return HttpResponse(list(data.values()), content_type="application/json")
+    return HttpResponse(json.dumps(list(data.values()),default=serialize_datetime), content_type="application/json")
 
 def update_realstate(request, pk):
     if guard(request):

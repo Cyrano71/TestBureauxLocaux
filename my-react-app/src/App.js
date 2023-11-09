@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 import RootLayout from "./pages/Root";
-import { useEffect } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
-import HomePage from './pages/Home';
+import { useEffect } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/Home";
+import ProductsPage, { loadAllRealEstate } from "./pages/Products";
+import ProductDetailsPage, { loadRealState } from "./pages/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,8 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      { path: "realestate", element: <ProductsPage />, loader: loadAllRealEstate },
+      { path: "realestate/:realestateId", element: <ProductDetailsPage />, loader: loadRealState  },
     ],
   },
 ]);
@@ -21,34 +24,21 @@ const router = createBrowserRouter([
 function App() {
   useEffect(() => {
     async function auth() {
-      const response = await fetch("http://localhost:8000/polls/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({"username":"jehan","password":"1234"})
-      })
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "polls/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: "jehan", password: "1234" }),
+        }
+      );
+      console.log(response)
       const data = await response.json();
-      localStorage.setItem("token", data["token"])
+      localStorage.setItem("token", data["token"]);
     }
-    auth()
-  }, [])
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    auth();
+  }, []);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
