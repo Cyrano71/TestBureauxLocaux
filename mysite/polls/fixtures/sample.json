@@ -14,5 +14,49 @@
         "question_text": "My second question",
         "pub_date": "2014-03-16T17:41:28+00:00"
       }
+    },
+    {
+      "model": "polls.realestate",
+      "pk": 1,
+      "fields": {
+        "title": "Bureaux privatifs 23 m²",
+        "addresse": "5 Rue Santeuil, 44000 Nantes",
+        "transaction_type": "rental",
+        "realty_type": "office",
+        "pub_date": "2023-03-16T17:41:28+00:00"
+      }
+    },
+    {
+      "model": "polls.realestate",
+      "pk": 2,
+      "fields": {
+        "title": "Bureaux privatifs 60 m²",
+        "addresse": "32 Avenue Kléber, 75116 Paris",
+        "transaction_type": "sale",
+        "realty_type": "office",
+        "pub_date": "2023-03-16T17:41:28+00:00"
+      }
+    },
+    {
+      "model": "polls.realestate",
+      "pk": 3,
+      "fields": {
+        "title": "Bureaux privatifs 317 m²",
+        "addresse": "94300 Vincennes",
+        "transaction_type": "rental",
+        "realty_type": "coworking",
+        "pub_date": "2023-03-16T18:41:28+00:00"
+      }
+    },
+    {
+      "model": "polls.realestate",
+      "pk": 4,
+      "fields": {
+        "title": "Location Local d'activités 550 m²",
+        "addresse": "56850 Caudan",
+        "transaction_type": "rental",
+        "realty_type": "warehouse",
+        "pub_date": "2023-03-17T18:41:28+00:00"
+      }
     }
   ]
