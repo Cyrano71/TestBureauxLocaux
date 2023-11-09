@@ -1,0 +1,16 @@
+curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/polls/
+curl --user jehan:1234 http://127.0.0.1:8000/polls/
+python manage.py shell  
+python manage.py runserver
+
+user = User.objects.create_user("jehan", "lennon@thebeatles.com", "1234")
+
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"jehan","password":"1234"}' \
+  http://127.0.0.1:8000/polls/login
+
+curl --header "Content-Type: application/json" --request POST --data '{"username":"jehan","password":"1234"}' http://127.0.0.1:8000/polls/login
+curl http://127.0.0.1:8000/polls/
+
+docker compose up
