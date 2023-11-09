@@ -10,6 +10,16 @@ class RealEstate(models.Model):
     realty_type = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
 
+    @classmethod
+    def create(cls, title, addresse, transaction_type, realty_type, pub_date):
+        realestate = cls(title=title, 
+                         addresse=addresse, 
+                         transaction_type=transaction_type, 
+                         realty_type=realty_type, 
+                         pub_date=pub_date)
+        # do something with the book
+        return realestate
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
