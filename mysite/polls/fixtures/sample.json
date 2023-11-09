@@ -11,7 +11,7 @@
       "model": "polls.question",
       "pk": 2,
       "fields": {
-        "question_text": "My  first question",
+        "question_text": "My second question",
         "pub_date": "2014-03-16T17:41:28+00:00"
       }
     }
