@@ -2,11 +2,15 @@ from django.http import HttpResponse
 from .models import RealEstate
 import json 
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
-cutom_token = "my_token"
+custom_token = None
+is_login = False
 
 def guard(request):
-    if "HTTP_AUTHORIZATION" not in request.META or request.META["HTTP_AUTHORIZATION"] != "Bearer " + cutom_token:
+    if not is_login:
+        return True
+    if "HTTP_AUTHORIZATION" not in request.META or request.META["HTTP_AUTHORIZATION"] != "Bearer " + custom_token:
         return True
     return False
 
@@ -16,7 +20,7 @@ def serialize_datetime(obj):
     if isinstance(obj, datetime.datetime): 
         return obj.isoformat() 
     raise TypeError("Type not serializable") 
-    
+
 def index(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
@@ -31,7 +35,12 @@ def login(request):
     password = body['password']
     user = authenticate(username=username, password=password)
     if user is not None:
-        response = HttpResponse(json.dumps({"token" : cutom_token}), content_type="application/json")
+        global is_login
+        is_login = True
+        refresh = RefreshToken.for_user(user)
+        global custom_token
+        custom_token = str(refresh.access_token)
+        response = HttpResponse(json.dumps({"token" : custom_token}), content_type="application/json")
     else:
         response = HttpResponse('Unauthorized', status=401)
     return response
