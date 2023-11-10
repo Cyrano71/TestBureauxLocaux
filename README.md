@@ -16,7 +16,7 @@ For the django we use the following packages :
 - django-cors-headers
 - djangorestframework-simplejwt
 
-The docker deployment will automatically populate the input data into the database (see mysite\api\fixtures\sample.json)
+The docker deployment will automatically populate the input data into the database (see [this sample](mysite/api/fixtures/sample.json) )
 and will automatically create two users:
 - one admin user with username = "admin", password = "1234"
 - one normal user with  username = "jehan", password = "1234"
