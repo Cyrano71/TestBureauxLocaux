@@ -27,7 +27,7 @@ Update:
 
 curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request PUT --data '{"title":"Bureaux privatifs 23 m2 wesh !"}' http://127.0.0.1:8000/api/1/update/
 
-curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !"}' "http://127.0.0.1:8000/aoi/1/update/"
+curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !"}' "http://127.0.0.1:8000/api/1/update/"
 
 Creation:
 

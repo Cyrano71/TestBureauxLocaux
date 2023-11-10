@@ -20,9 +20,8 @@ def serialize_datetime(obj):
 def index(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
-    latest_realstate_list = RealEstate.objects.order_by("-pub_date")[:5].only("pk")
-    data = latest_realstate_list.values_list('pk', flat=True) #list(latest_realstate_list.values())
-    data = list(data)
+    latest_realstate_list = RealEstate.objects.order_by("-pub_date")[:5]
+    data = list(latest_realstate_list.values('id', 'title')) 
     return HttpResponse(json.dumps(data), content_type="application/json")
     
 def login(request):
@@ -49,7 +48,7 @@ def update_realstate(request, pk):
     try: 
         realstate = RealEstate.objects.get(pk=pk) 
     except Exception: 
-        return HttpResponse({'message': 'The Reak state does not exist'}, status=404) 
+        return HttpResponse({'message': 'The Reak state does not exist'}, status=400) 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
     for key in body:
@@ -60,15 +59,13 @@ def update_realstate(request, pk):
 def create_realstate(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
-    print(request.body)
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-
+    print(body)
     required_elts = ["title", "addresse", "transaction_type", "realty_type", "pub_date"]
     for elt in required_elts:
         if elt not in body:
-               return HttpResponse(f'Inavlid Request: missing {elt}', status=404)
-
+               return HttpResponse(json.dumps({"message": f'Invalid Request: missing {elt}'}), status=400)
     realestate = RealEstate.create(body["title"], 
                               body["addresse"], 
                               body["transaction_type"],
