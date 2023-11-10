@@ -71,3 +71,6 @@ In the the list of real estate items you have a button to create a new item:
 It will redirect you to the add page:
 
 ![alt text](assets/createform_page.PNG)
+
+6. For the css I would like to thank mattc0m
+You can find his work on this link : https://codepen.io/mattc0m/pen/rNdMjKX
