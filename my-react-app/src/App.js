@@ -7,6 +7,7 @@ import ProductsPage, { loadAllRealEstate } from "./pages/Products";
 import ProductDetailsPage, { loadRealState } from "./pages/ProductDetails";
 import NewProductPage from "./pages/NewProduct";
 import { action as eventFormAction } from './components/ProductForm';
+import UpdateProductPage from "./pages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       },
       { path: "realestate", element: <ProductsPage />, loader: loadAllRealEstate },
       { path: "realestate/add", element: <NewProductPage />, action: eventFormAction },
+      { path: "realestate/:realestateId/update", element: <UpdateProductPage />, action: eventFormAction },
       { path: "realestate/:realestateId", element: <ProductDetailsPage />, loader: loadRealState  },
     ],
   },

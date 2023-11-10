@@ -1,4 +1,4 @@
-import { useParams, useLoaderData, json } from "react-router-dom";
+import { useParams, useLoaderData, json, Link } from "react-router-dom";
 import classes from "./ProductDetails.module.css";
 
 export default function ProductDetailsPage(props) {
@@ -16,12 +16,24 @@ export default function ProductDetailsPage(props) {
             <h1>{data.title}</h1>
             <p className={classes["sub"]}>{data.addresse}</p>
             <p className={classes["sub"]}>{data.transaction_type}</p>
+            <p className={classes["sub"]}>{data.realty_type}</p>    
             <p className={classes["price"]}>{data.pub_date}</p>
           </div>
         </div>
       </div>
       <div className={classes["card__footer"]}>
-          <button className={classes["button-3"]} type="button">Update Item</button>
+        <Link
+          to="update"
+          state={{
+            title: data.title,
+            addresse: data.addresse,
+            transaction_type: data.transaction_type,
+            realty_type: data.realty_type,
+          }}
+          className={classes["button-3"]}
+        >
+          Update Item
+        </Link>
       </div>
     </div>
   );

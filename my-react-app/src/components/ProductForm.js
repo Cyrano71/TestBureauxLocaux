@@ -9,7 +9,14 @@ import {
 
 import classes from "./ProductForm.module.css";
 
-function EventForm({ method, event }) {
+function EventForm({
+  method,
+  event,
+  titleDefaultValue,
+  addresseDefaultValue,
+  transaction_typeDefaultValue,
+  realty_typeDefaultValue,
+}) {
   const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -36,7 +43,7 @@ function EventForm({ method, event }) {
           type="text"
           name="title"
           required
-          defaultValue="My amazing office"
+          defaultValue={titleDefaultValue}
         />
       </p>
       <p>
@@ -46,7 +53,7 @@ function EventForm({ method, event }) {
           type="text"
           name="addresse"
           required
-          defaultValue="st germain des près"
+          defaultValue={addresseDefaultValue}
         />
       </p>
       <p>
@@ -57,12 +64,12 @@ function EventForm({ method, event }) {
           name="transaction_type"
           list="transaction_types"
           required
-          defaultValue={event ? event.title : ""}
+          placeholder={transaction_typeDefaultValue}
         />
-         <datalist id="transaction_types">
-              <option value="rental" />
-              <option value="sale" />
-            </datalist>
+        <datalist id="transaction_types">
+          <option value="rental" />
+          <option value="sale" />
+        </datalist>
       </p>
       <p>
         <label htmlFor="realty_type">Realty Type</label>
@@ -72,15 +79,15 @@ function EventForm({ method, event }) {
           name="realty_type"
           list="realty_types"
           required
-          defaultValue={event ? event.title : ""}
+          placeholder={realty_typeDefaultValue}
         />
-            <datalist id="realty_types">
-              <option value="office" />
-              <option value="land plot" />
-              <option value="warehouse" />
-              <option value="retail" />
-              <option value="coworking" />
-            </datalist>
+        <datalist id="realty_types">
+          <option value="office" />
+          <option value="land plot" />
+          <option value="warehouse" />
+          <option value="retail" />
+          <option value="coworking" />
+        </datalist>
       </p>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
@@ -105,14 +112,18 @@ export async function action({ request, params }) {
     addresse: data.get("addresse"),
     transaction_type: data.get("transaction_type"),
     realty_type: data.get("realty_type"),
-    pub_date: new Date().toJSON()
+    pub_date: new Date().toJSON(),
   };
 
   let url = process.env.REACT_APP_BACKEND_URL + "api/create/";
-
+  const realestateId = params.realestateId
+  if (method === "PUT"){ 
+    url = process.env.REACT_APP_BACKEND_URL + "api/" + realestateId + "/update/";
+  }
+  console.log(url)
   const token = localStorage.getItem("token");
   const response = await fetch(url, {
-    method: "POST",
+    method: method,
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
@@ -128,5 +139,8 @@ export async function action({ request, params }) {
     throw json({ message: "Could not save event." }, { status: 500 });
   }
 
+  if (method === "put"){
+    return redirect("/realestate/" +  realestateId);
+  }
   return redirect("/realestate");
 }
