@@ -60,7 +60,11 @@ If you click on the title of the item you will have access to the details of the
 ![alt text](assets/realestatedetail_page.PNG)
 
 You can update the item by clicking on the button and you will be redirected to the update form
-automatically populated with the data of the item:
+automatically populated with the data of the item. 
+For the Transaction type you will have only theses choices:
+- rental or sale
+For the Realty type  you will have only theses choices:
+- office, land plot, warehouse, retail or coworking
 
 ![alt text](assets/updateform_page.PNG)
 
