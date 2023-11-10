@@ -20,7 +20,7 @@ def serialize_datetime(obj):
 def index(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
-    latest_realstate_list = RealEstate.objects.order_by("-pub_date")[:5]
+    latest_realstate_list = RealEstate.objects.order_by("-pub_date")
     data = list(latest_realstate_list.values('id', 'title')) 
     return HttpResponse(json.dumps(data), content_type="application/json")
     

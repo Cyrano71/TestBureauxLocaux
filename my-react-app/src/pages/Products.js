@@ -1,19 +1,43 @@
-import { Link, json, useLoaderData } from "react-router-dom";
+import { Link, json, useLoaderData, useNavigate } from "react-router-dom";
+import classes from "./Products.module.css";
 
 export default function ProductsPage(props) {
   const data = useLoaderData();
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    navigate("add");
+  };
+  console.log(data)
   return (
     <>
-      <h2>The list of realstate page</h2>
-      <ul>
-        {data.sort().map((id) => {
-          return (
-            <li key={id}>
-              <Link to={`${id}`}>RealEstate {id}</Link>
-            </li>
-          );
-        })}
-      </ul>
+      <strong>RealEstate Page</strong>
+
+      <ol className={classes["alternating-colors"]}>
+        {data
+          .sort(function (a, b) {
+            return a.id - b.id;
+          })
+          .map((item) => {
+            return (
+              <li key={item.id}>
+                <Link to={`${item.id}`}>
+                  <strong>RealEstate {item.id}</strong>
+                </Link>
+                <p>{item.title}</p>
+              </li>
+            );
+          })}
+      </ol>
+
+      <p>
+        <button
+          onClick={navigateHandler}
+          className={classes["button-3"]}
+          role="button"
+        >
+          Create new RealEstate
+        </button>
+      </p>
     </>
   );
 }

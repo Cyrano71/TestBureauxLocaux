@@ -5,6 +5,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
 import ProductsPage, { loadAllRealEstate } from "./pages/Products";
 import ProductDetailsPage, { loadRealState } from "./pages/ProductDetails";
+import NewProductPage from "./pages/NewProduct";
+import { action as eventFormAction } from './components/ProductForm';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       { path: "realestate", element: <ProductsPage />, loader: loadAllRealEstate },
+      { path: "realestate/add", element: <NewProductPage />, action: eventFormAction },
       { path: "realestate/:realestateId", element: <ProductDetailsPage />, loader: loadRealState  },
     ],
   },
