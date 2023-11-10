@@ -1,33 +1,37 @@
+python manage.py migrate
 python manage.py runserver
+python manage.py makemigrations api
+python manage.py migrate
+python manage.py loaddata sample.json
 
 Shell:
 python manage.py shell  
 user = User.objects.create_user("jehan", "lennon@thebeatles.com", "1234")
 
 Index:
-curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/polls/
-curl http://127.0.0.1:8000/polls/
+curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/api/
+curl http://127.0.0.1:8000/api/
 
 Details:
-curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/polls/1/
+curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/api/1/
 
 Login:
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"username":"jehan","password":"1234"}' \
-  http://127.0.0.1:8000/polls/login
+  http://127.0.0.1:8000/api/login
 
-curl --header "Content-Type: application/json" --request POST --data '{"username":"jehan","password":"1234"}' http://127.0.0.1:8000/polls/login
+curl --header "Content-Type: application/json" --request POST --data '{"username":"jehan","password":"1234"}' http://127.0.0.1:8000/api/login
 
 Update:
 
-curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request PUT --data '{"title":"Bureaux privatifs 23 m2 wesh !"}' http://127.0.0.1:8000/polls/1/update/
+curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request PUT --data '{"title":"Bureaux privatifs 23 m2 wesh !"}' http://127.0.0.1:8000/api/1/update/
 
-curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !"}' "http://127.0.0.1:8000/polls/1/update/"
+curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !"}' "http://127.0.0.1:8000/aoi/1/update/"
 
 Creation:
 
-curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request POST --data '{"title":"Nouveau Bureaux privatifs 235 m2", "addresse": "Aulnay Sous Bois", "transaction_type": "rental", "realty_type": "office", "pub_date": ""2023-03-19T18:41:28+00:00""}' http://127.0.0.1:8000/polls/create/
+curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request POST --data '{"title":"Nouveau Bureaux privatifs 235 m2", "addresse": "Aulnay Sous Bois", "transaction_type": "rental", "realty_type": "office", "pub_date": "2023-03-19T18:41:28+00:00"}' http://127.0.0.1:8000/api/create/
 
 DOCKER:
 docker compose up

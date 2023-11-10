@@ -20,7 +20,7 @@ export default function ProductsPage(props) {
 
 export async function loadAllRealEstate() {
   const token = localStorage.getItem("token");
-  const response = await fetch(process.env.REACT_APP_BACKEND_URL + "polls/", {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + "api/", {
     headers: {
       Authorization: "Bearer " + token,
     },

@@ -1,22 +1,15 @@
 [
-    {
-      "model": "polls.question",
-      "pk": 1,
-      "fields": {
-        "question_text": "My  first question",
-        "pub_date": "2013-03-16T17:41:28+00:00"
-      }
-    },
-    {
-      "model": "polls.question",
+   {
+      "model": "auth.user",
       "pk": 2,
       "fields": {
-        "question_text": "My second question",
-        "pub_date": "2014-03-16T17:41:28+00:00"
+        "username": "jehan",
+        "email": "jehan@example.com",
+        "password": "pbkdf2_sha256$600000$d0Y66hHI5zbFEwAsOiDOQK$O1wB+tKQEZN0TUsoa8qIUaFnUG3p45QdR2i1ze1zYJk="
       }
     },
     {
-      "model": "polls.realestate",
+      "model": "api.realestate",
       "pk": 1,
       "fields": {
         "title": "Bureaux privatifs 23 m²",
@@ -27,7 +20,7 @@
       }
     },
     {
-      "model": "polls.realestate",
+      "model": "api.realestate",
       "pk": 2,
       "fields": {
         "title": "Bureaux privatifs 60 m²",
@@ -38,7 +31,7 @@
       }
     },
     {
-      "model": "polls.realestate",
+      "model": "api.realestate",
       "pk": 3,
       "fields": {
         "title": "Bureaux privatifs 317 m²",
@@ -49,7 +42,7 @@
       }
     },
     {
-      "model": "polls.realestate",
+      "model": "api.realestate",
       "pk": 4,
       "fields": {
         "title": "Location Local d'activités 550 m²",

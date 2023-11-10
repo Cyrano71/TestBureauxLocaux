@@ -18,7 +18,7 @@ export default function ProductDetailsPage(props) {
 export async function loadRealState({ params }) {
   console.log(params.realestateId);
   const token = localStorage.getItem("token");
-  const response = await fetch(process.env.REACT_APP_BACKEND_URL + "polls/" + params.realestateId + "/", {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + "api/" + params.realestateId + "/", {
     headers: {
       Authorization: "Bearer " + token,
     },

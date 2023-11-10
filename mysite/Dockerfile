@@ -4,6 +4,6 @@ WORKDIR /project
 
 COPY . .
 ADD mysite/ mysite/
-ADD polls/ polls/
+ADD api/ api/
 
 RUN pip3 install -r requirements.txt --no-cache-dir

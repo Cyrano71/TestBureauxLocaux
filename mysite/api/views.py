@@ -12,7 +12,6 @@ def guard(request):
 
 import datetime 
   
-# Define a custom function to serialize datetime objects 
 def serialize_datetime(obj): 
     if isinstance(obj, datetime.datetime): 
         return obj.isoformat() 
@@ -36,10 +35,6 @@ def login(request):
         response = HttpResponse(json.dumps({"token" : cutom_token}), content_type="application/json")
     else:
         response = HttpResponse('Unauthorized', status=401)
-    #response["Access-Control-Allow-Origin"] = "*"
-    #response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    #response["Access-Control-Max-Age"] = "1000"
-    #response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
     return response
 
 def detail(request, pk):
@@ -65,7 +60,7 @@ def update_realstate(request, pk):
 def create_realstate(request):
     if guard(request):
         return HttpResponse('Unauthorized', status=401)
-
+    print(request.body)
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
 
