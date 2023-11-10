@@ -8,6 +8,7 @@ import ProductDetailsPage, { loadRealState } from "./pages/ProductDetails";
 import NewProductPage from "./pages/NewProduct";
 import { action as eventFormAction } from './components/ProductForm';
 import UpdateProductPage from "./pages/UpdateProduct";
+import AuthenticationPage, {action as authAction} from "./pages/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      { path: "login", element: <AuthenticationPage />, action: authAction },
       { path: "realestate", element: <ProductsPage />, loader: loadAllRealEstate },
       { path: "realestate/add", element: <NewProductPage />, action: eventFormAction },
       { path: "realestate/:realestateId/update", element: <UpdateProductPage />, action: eventFormAction },
@@ -27,22 +29,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  useEffect(() => {
-    async function auth() {
-      const response = await fetch(
-        process.env.REACT_APP_BACKEND_URL + "api/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username: "jehan", password: "1234" }),
-        }
-      );
-      console.log(response)
-      const data = await response.json();
-      localStorage.setItem("token", data["token"]);
-    }
-    auth();
-  }, []);
   return <RouterProvider router={router} />;
 }
 
