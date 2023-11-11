@@ -38,7 +38,7 @@ We use as dependencies:
 
 ## Use the application
 
-The url : ttp://localhost:3000/
+The url : http://localhost:3000/
 
 When you will first use the application you will need to log into the backend
 
@@ -85,6 +85,10 @@ It will redirect you to the add page:
 To run the django tests, you need first to set the credentials of the test database you are using, in this file:
 
 [settings.py#94](mysite/mysite/settings.py#94)
+
+And you also need to sepcify in the env file that you want to use the dev environment:
+
+[.env](mysite/mysite/.env)
 
 Then you cd into the mysite folder:
 
