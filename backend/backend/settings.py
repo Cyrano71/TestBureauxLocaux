@@ -90,14 +90,17 @@ import os
 load_dotenv() 
 
 config_prefix = None
-if os.getenv("ENVIRONMENT") == "dev":
-    config_prefix = "DEV_"
-else:
+db_engine = None
+if os.getenv("ENVIRONMENT") == "production":
     config_prefix = "PROD_"
+    db_engine = 'django.db.backends.postgresql'
+else:
+    config_prefix = "DEV_"
+    db_engine = os.getenv(config_prefix + "DB_ENGINE")
 
 DATABASES = {
     "default": {
-        'ENGINE': os.getenv(config_prefix + "DB_ENGINE"),
+        'ENGINE': db_engine,
         'NAME': os.getenv(config_prefix + "DB_NAME"),
         'USER': os.getenv(config_prefix + "DB_USER"),
         'PASSWORD': os.getenv(config_prefix + "DB_PASSWORD"),

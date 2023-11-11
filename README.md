@@ -92,11 +92,9 @@ For the Realty type  you will have only theses choices:
 
  `cd backend`
 
-2. You sepcify in the env file that you want to use the dev environment (by setting ENVIRONMENT=dev)
-and you provide the credentials of your dev database:
+2. You provide the credentials of your dev database in the env file :
 
    ```
-   ENVIRONMENT=dev
    DEV_DB_ENGINE= django.db.backends.mysql
    DEV_DB_HOST=localhost
    DEV_DB_NAME=
