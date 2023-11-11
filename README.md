@@ -38,7 +38,7 @@ We use as dependencies:
 
 ## Use the application
 
-The url : http://localhost:3000/
+The url is : http://localhost:3000/
 
 When you will first use the application you will need to log into the backend
 
@@ -92,6 +92,14 @@ You sepcify in the env file that you want to use the dev environment by setting 
 and you need to provide the credentials of your dev database:
 
 [.env](backend/backend/.env)
+
+You also need to install in your conda env the requirements:
+
+ ```
+ conda create --name mytestenv
+ conda activate mytestenv
+ pip3 install -r requirements.txt
+ ```
 
 You run the tests with this command :
 
