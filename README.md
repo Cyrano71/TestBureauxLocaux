@@ -88,10 +88,20 @@ You cd into the backend folder:
 
  `cd backend`
 
-You sepcify in the env file that you want to use the dev environment by setting ENVIRONMENT=dev
-and you need to provide the credentials of your dev database:
+You sepcify in the env file that you want to use the dev environment (by setting ENVIRONMENT=dev)
+and you provide the credentials of your dev database:
 
-[.env](backend/backend/.env)
+   ```
+   ENVIRONMENT=dev
+   DEV_DB_ENGINE= django.db.backends.mysql
+   DEV_DB_HOST=localhost
+   DEV_DB_NAME=
+   DEV_DB_PORT=3306
+   DEV_DB_USER=
+   DEV_DB_PASSWORD=
+   ```
+
+   [env file](backend/backend/.env)
 
 You also need to install in your conda env the requirements:
 
