@@ -57,13 +57,13 @@ that will be stored in the local storage of your browser:
 
 ![alt text](assets/localstorage.PNG)
 
-4. With this token you will have access to the list of real estate items in the postgres database:
-
-![alt text](assets/realestate_page.PNG)
-
-5. If you try to skip the authentification step you will receive an Unauthorized response from the backend:
+4. If you try to skip the authentification step you will receive an Unauthorized response from the backend:
 
 ![alt text](assets/unauthorized.PNG)
+
+5. With this token you will have access to the list of real estate items in the postgres database:
+
+![alt text](assets/realestate_page.PNG)
 
 6. If you click on the title of the item you will have access to the details of the item:
 
