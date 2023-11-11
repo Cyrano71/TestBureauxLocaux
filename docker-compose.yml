@@ -31,8 +31,6 @@ services:
       
   postgresql:
     image: postgres:13.0
-    volumes:
-      - ./local_volumes/db/:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=main
       - POSTGRES_PASSWORD=bureauxlocaux123
