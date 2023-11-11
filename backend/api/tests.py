@@ -33,7 +33,7 @@ class ViewTestCase(TestCase):
         response = self.c.post("/api/login", json.dumps({"username": self.username, "password": wrong_password}), content_type='application/json')
         self.assertEqual(response.status_code, 401)
         body = response.content.decode('utf-8')
-        self.assertEqual(body, "Unauthorized")
+        self.assertEqual(body, 'Failed to authenticate the user: wrong username or password')
 
     def test_index_success(self):
         response = self.c.post("/api/login", json.dumps({"username": self.username, "password": self.password}), content_type='application/json')
@@ -56,4 +56,4 @@ class ViewTestCase(TestCase):
          })
         self.assertEqual(response.status_code, 401)
         body = response.content.decode('utf-8')
-        self.assertEqual(body, "Unauthorized")
+        self.assertEqual(body, 'Unauthorized : unknown token')

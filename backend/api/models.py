@@ -10,11 +10,11 @@ class RealEstate(models.Model):
 
     @classmethod
     def create(cls, title, addresse, transaction_type, realty_type, pub_date):
-        return cls(title, 
-                         addresse, 
-                         transaction_type, 
-                         realty_type, 
-                         pub_date)
+        return cls(title=title, 
+                    addresse=addresse, 
+                    transaction_type=transaction_type, 
+                    realty_type=realty_type, 
+                    pub_date=pub_date)
     
 class UserAuth(models.Model):
     user = models.OneToOneField(
