@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
-import EventForm from "../components/ProductForm";
+import ItemForm from "../components/ItemForm";
 
-function UpdateProductPage() {
+function UpdateItemPage() {
   const location = useLocation();
   const { title, addresse, transaction_type, realty_type } = location.state;
   return (
-    <EventForm
+    <ItemForm
       method="put"
       titleDefaultValue={title}
       addresseDefaultValue={addresse}
@@ -15,4 +15,4 @@ function UpdateProductPage() {
   );
 }
 
-export default UpdateProductPage;
+export default UpdateItemPage;

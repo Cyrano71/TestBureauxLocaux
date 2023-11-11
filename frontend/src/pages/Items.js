@@ -1,7 +1,7 @@
 import { Link, json, useLoaderData, useNavigate } from "react-router-dom";
-import classes from "./Products.module.css";
+import classes from "./Items.module.css";
 
-export default function ProductsPage(props) {
+export default function ItemsPage() {
   const data = useLoaderData();
   const navigate = useNavigate();
   const navigateHandler = () => {

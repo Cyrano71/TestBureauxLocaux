@@ -2,11 +2,11 @@ import "./App.css";
 import RootLayout from "./pages/Root";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
-import ProductsPage, { loadAllRealEstate } from "./pages/Products";
-import ProductDetailsPage, { loadRealState } from "./pages/ProductDetails";
-import NewProductPage from "./pages/NewProduct";
-import { action as eventFormAction } from './components/ProductForm';
-import UpdateProductPage from "./pages/UpdateProduct";
+import ItemsPage, { loadAllRealEstate } from "./pages/Items";
+import ItemDetailsPage, { loadRealState } from "./pages/ItemDetails";
+import NewItemPage from "./pages/NewItem";
+import { action as eventFormAction } from './components/ItemForm';
+import UpdateItemPage from "./pages/UpdateItem";
 import AuthenticationPage, {action as authAction} from "./pages/Authentication";
 import ErrorPage from "./pages/Error";
 
@@ -21,10 +21,10 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       { path: "login", element: <AuthenticationPage />, action: authAction },
-      { path: "realestate", element: <ProductsPage />, loader: loadAllRealEstate },
-      { path: "realestate/add", element: <NewProductPage />, action: eventFormAction },
-      { path: "realestate/:realestateId/update", element: <UpdateProductPage />, action: eventFormAction },
-      { path: "realestate/:realestateId", element: <ProductDetailsPage />, loader: loadRealState  },
+      { path: "realestate", element: <ItemsPage />, loader: loadAllRealEstate },
+      { path: "realestate/add", element: <NewItemPage />, action: eventFormAction },
+      { path: "realestate/:realestateId/update", element: <UpdateItemPage />, action: eventFormAction },
+      { path: "realestate/:realestateId", element: <ItemDetailsPage />, loader: loadRealState  },
     ],
   },
 ]);

@@ -7,9 +7,9 @@ import {
   redirect,
 } from "react-router-dom";
 
-import classes from "./ProductForm.module.css";
+import classes from "./ItemForm.module.css";
 
-function EventForm({
+function ItemForm({
   method,
   event,
   titleDefaultValue,
@@ -101,7 +101,7 @@ function EventForm({
   );
 }
 
-export default EventForm;
+export default ItemForm;
 
 export async function action({ request, params }) {
   const method = request.method;

@@ -1,8 +1,8 @@
-import EventForm from "../components/ProductForm";
+import ItemForm from "../components/ItemForm";
 
-function NewProductPage() {
+function NewItemPage() {
   return (
-    <EventForm
+    <ItemForm
       method="post"
       titleDefaultValue="My amazing office"
       addresseDefaultValue="st germain des près"
@@ -12,4 +12,4 @@ function NewProductPage() {
   );
 }
 
-export default NewProductPage;
+export default NewItemPage;

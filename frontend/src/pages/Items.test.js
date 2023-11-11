@@ -2,7 +2,7 @@ import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import * as React from "react";
 import { render, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ProductsPage from "./Products";
+import ItemsPage from "./Items";
 
 const FAKE_TEST_DATA_PRODUCTS = [
     {
@@ -20,7 +20,7 @@ describe("Products component", () => {
     const routes = [
       {
         path: "realestate",
-        element: <ProductsPage />,
+        element: <ItemsPage />,
         loader: () => FAKE_TEST_DATA_PRODUCTS,
       },
     ];

@@ -1,7 +1,7 @@
 import { useLoaderData, json, Link } from "react-router-dom";
-import classes from "./ProductDetails.module.css";
+import classes from "./ItemDetails.module.css";
 
-export default function ProductDetailsPage() {
+export default function ItemDetailsPage() {
   const data = useLoaderData();
 
   return (
