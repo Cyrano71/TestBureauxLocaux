@@ -89,27 +89,21 @@ import os
 
 load_dotenv() 
 
+config_prefix = None
 if os.getenv("ENVIRONMENT") == "dev":
-    db_config = {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv("LOCAL_DB"),
-        'USER': os.getenv("USER"),
-        'PASSWORD': os.getenv("PASSWORD"),
-        'HOST':'localhost',
-        'PORT':'3306',
-    }
+    config_prefix = "DEV_"
 else:
-    db_config = {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DB_NAME"), 
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
-        'HOST': os.getenv("DB_HOST"),
-        'PORT': os.getenv("DB_PORT"),
-    }
+    config_prefix = "PROD_"
 
 DATABASES = {
-    "default": db_config
+    "default": {
+        'ENGINE': os.getenv(config_prefix + "DB_ENGINE"),
+        'NAME': os.getenv(config_prefix + "DB_NAME"),
+        'USER': os.getenv(config_prefix + "DB_USER"),
+        'PASSWORD': os.getenv(config_prefix + "DB_PASSWORD"),
+        'HOST': os.getenv(config_prefix + "DB_HOST"),
+        'PORT': os.getenv(config_prefix + "DB_PORT"),
+    }
 }
 
 # Password validation

@@ -82,13 +82,12 @@ It will redirect you to the add page:
 
 ## UniTests
 
-To run the django tests, you need first to set the credentials of the test database you are using, in this file:
-
-[settings.py#94](mysite/mysite/settings.py#94)
-
-And you also need to sepcify in the env file that you want to use the dev environment:
+To run the django tests, 
+You need to sepcify in the env file that you want to use the dev environment by setting ENVIRONMENT=dev
+and you need to provide the credentials of your dev database:
 
 [.env](mysite/mysite/.env)
+
 
 Then you cd into the mysite folder:
 
