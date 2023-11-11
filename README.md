@@ -5,6 +5,10 @@
 1. Clone this Repo
 
    `git clone https://github.com/Cyrano71/TestBureauxLocaux.git`
+
+2. cd into the TestBureauxLocaux folder:
+
+   `cd TestBureauxLocaux`
    
 2. deploy the backend by using the docker command :
 
@@ -40,28 +44,28 @@ We use as dependencies:
 
 The url is : http://localhost:3000/
 
-When you will first use the application you will need to log into the backend
+1. When you will first use the application you will need to log into the backend
 
 ![alt text](assets/homepage_login.PNG)
 
-Then you will have a log in form automatically populated with the credential of the user jehan
+2. Then you will have a log in form automatically populated with the credential of the user jehan
 
 ![alt text](assets/loginform.PNG)
 
-As soon as the authentication is done with the backend you will receive an authentication token
+3. As soon as the authentication is done with the backend you will receive an authentication token
 that will be stored in the local storage of your browser:
 
 ![alt text](assets/localstorage.PNG)
 
-With this token you will have access to the list of real estate items in the postgres database:
+4. With this token you will have access to the list of real estate items in the postgres database:
 
 ![alt text](assets/realestate_page.PNG)
 
-If you click on the title of the item you will have access to the details of the item:
+5. If you click on the title of the item you will have access to the details of the item:
 
 ![alt text](assets/realestatedetail_page.PNG)
 
-You can update the item by clicking on the button and you will be redirected to the update form
+6. You can update the item by clicking on the button and you will be redirected to the update form
 automatically populated with the data of the item. 
 
 For the Transaction type you will have only theses choices:
@@ -72,11 +76,11 @@ For the Realty type  you will have only theses choices:
 
 ![alt text](assets/updateform_page.PNG)
 
-In the the list of real estate items you have a button to create a new item:
+7. In the the list of real estate items you have a button to create a new item:
 
 ![alt text](assets/realestate_page.PNG)
 
-It will redirect you to the add page:
+8. It will redirect you to the add page:
 
 ![alt text](assets/createform_page.PNG)
 
@@ -84,11 +88,11 @@ It will redirect you to the add page:
 
 ### Backend Django unitests
 
-You cd into the backend folder:
+1. You cd into the backend folder:
 
  `cd backend`
 
-You sepcify in the env file that you want to use the dev environment (by setting ENVIRONMENT=dev)
+2. You sepcify in the env file that you want to use the dev environment (by setting ENVIRONMENT=dev)
 and you provide the credentials of your dev database:
 
    ```
@@ -103,7 +107,7 @@ and you provide the credentials of your dev database:
 
    [env file](backend/backend/.env)
 
-You also need to install in your conda env the requirements:
+3. You also need to install in your conda env the requirements:
 
  ```
  conda create --name mytestenv
@@ -111,7 +115,7 @@ You also need to install in your conda env the requirements:
  pip3 install -r requirements.txt
  ```
 
-You run the tests with this command :
+4. You run the tests with this command :
 
  `python manage.py test`
 
@@ -119,11 +123,11 @@ You can find the code of the tests here : [tests code](backend/api/tests.py)
 
 ### Frontend React unitests
 
-you cd into the frontend folder:
+1. you cd into the frontend folder:
 
  `cd frontend`
 
-And you run the tests with commands :
+2. you run the tests with commands :
 
  `npm test`
 
