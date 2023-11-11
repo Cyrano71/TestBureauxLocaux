@@ -25,7 +25,7 @@ and will automatically create two users:
 - one admin user with username = "admin", password = "1234"
 - one normal user with  username = "jehan", password = "1234"
 
-3. cd into the frontend react app folder
+3. in a new terminal, cd into the frontend react app folder
 
    `cd frontend`
 

@@ -33,7 +33,6 @@ export default function ProductsPage(props) {
         <button
           onClick={navigateHandler}
           className={classes["button-3"]}
-          role="button"
         >
           Create new RealEstate
         </button>

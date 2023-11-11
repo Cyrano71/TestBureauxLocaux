@@ -1,8 +1,7 @@
-import { useParams, useLoaderData, json, Link } from "react-router-dom";
+import { useLoaderData, json, Link } from "react-router-dom";
 import classes from "./ProductDetails.module.css";
 
-export default function ProductDetailsPage(props) {
-  const params = useParams();
+export default function ProductDetailsPage() {
   const data = useLoaderData();
 
   return (

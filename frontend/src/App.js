@@ -1,6 +1,5 @@
 import "./App.css";
 import RootLayout from "./pages/Root";
-import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
 import ProductsPage, { loadAllRealEstate } from "./pages/Products";

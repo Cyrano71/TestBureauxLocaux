@@ -1,4 +1,4 @@
-import { Form, Link, useActionData, useNavigation, useParams } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 
 import classes from "./AuthForm.module.css";
 
