@@ -60,7 +60,7 @@ CSRF_TRUSTED_ORIGINS = [
         'http://localhost:3000',
     ]
 
-ROOT_URLCONF = "mysite.urls"
+ROOT_URLCONF = "backend.urls"
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "mysite.wsgi.application"
+WSGI_APPLICATION = "backend.wsgi.application"
 
 
 # Database

@@ -16,14 +16,14 @@ For the django we use the following packages :
 - django-cors-headers
 - djangorestframework-simplejwt
 
-The docker deployment will automatically populate the input data into the database (see [this sample](mysite/api/fixtures/sample.json) )
+The docker deployment will automatically populate the input data into the database (see [this sample](backend/api/fixtures/sample.json) )
 and will automatically create two users:
 - one admin user with username = "admin", password = "1234"
 - one normal user with  username = "jehan", password = "1234"
 
-3. cd into the react app folder
+3. cd into the frontend react app folder
 
-   `cd my-react-app`
+   `cd frontend`
 
 4. install the dependencies
 
@@ -32,7 +32,7 @@ and will automatically create two users:
 We use as dependencies:
 - react-router
 
-4. Start the app
+4. Start the frontend app
 
    `npm run start`
 
@@ -82,34 +82,34 @@ It will redirect you to the add page:
 
 ## UniTests
 
-### Django unitests
+### Backend Django unitests
 
-You need to sepcify in the env file that you want to use the dev environment by setting ENVIRONMENT=dev
+You cd into the backend folder:
+
+ `cd backend`
+
+You sepcify in the env file that you want to use the dev environment by setting ENVIRONMENT=dev
 and you need to provide the credentials of your dev database:
 
-[.env](mysite/mysite/.env)
+[.env](backend/backend/.env)
 
-Then you cd into the mysite folder:
-
- `cd mysite`
-
-And you run the tests with commands :
+You run the tests with this command :
 
  `python manage.py test`
 
-You can find the code of the tests here : [tests code](mysite/api/tests.py)
+You can find the code of the tests here : [tests code](backend/api/tests.py)
 
-### React unitests
+### Frontend React unitests
 
-you cd into the my-react-app folder:
+you cd into the frontend folder:
 
- `cd my-react-app`
+ `cd frontend`
 
 And you run the tests with commands :
 
  `npm test`
 
-You can find the code of the tests here : [tests code](my-react-app/src/pages/Products.test.js)
+You can find the code of the tests here : [tests code](frontend/src/pages/Products.test.js)
 
 ## References
 
