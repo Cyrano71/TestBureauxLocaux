@@ -48,14 +48,17 @@ export async function loadAllRealEstate() {
       Authorization: "Bearer " + token,
     },
   });
+
   if (!response.ok) {
+    const errorMessage = await response.text();
     throw json(
-      { message: "Could not fetch realestate items" },
+      { message: "Could not fetch realestate items : " +  errorMessage},
       {
         status: 500,
       }
     );
   }
+
   const responseData = await response.json();
   console.log(responseData);
   return responseData;

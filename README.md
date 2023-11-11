@@ -61,11 +61,15 @@ that will be stored in the local storage of your browser:
 
 ![alt text](assets/realestate_page.PNG)
 
-5. If you click on the title of the item you will have access to the details of the item:
+5. If you try to skip the authentification step you will receive an Unauthorized response from the backend:
+
+![alt text](assets/unauthorized.PNG)
+
+6. If you click on the title of the item you will have access to the details of the item:
 
 ![alt text](assets/realestatedetail_page.PNG)
 
-6. You can update the item by clicking on the button and you will be redirected to the update form
+7. You can update the item by clicking on the button and you will be redirected to the update form
 automatically populated with the data of the item. 
 
 For the Transaction type you will have only theses choices:
@@ -76,11 +80,11 @@ For the Realty type  you will have only theses choices:
 
 ![alt text](assets/updateform_page.PNG)
 
-7. In the the list of real estate items you have a button to create a new item:
+8. In the the list of real estate items you have a button to create a new item:
 
 ![alt text](assets/realestate_page.PNG)
 
-8. It will redirect you to the add page:
+9. It will redirect you to the add page:
 
 ![alt text](assets/createform_page.PNG)
 

@@ -8,11 +8,13 @@ import NewProductPage from "./pages/NewProduct";
 import { action as eventFormAction } from './components/ProductForm';
 import UpdateProductPage from "./pages/UpdateProduct";
 import AuthenticationPage, {action as authAction} from "./pages/Authentication";
+import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

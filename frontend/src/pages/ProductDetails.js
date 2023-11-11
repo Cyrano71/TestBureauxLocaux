@@ -50,8 +50,9 @@ export async function loadRealState({ params }) {
     }
   );
   if (!response.ok) {
+    const errorMessage = await response.text();
     throw json(
-      { message: "Could not fetch realstate " + params.realestateId },
+      { message: "Could not fetch realstate " + params.realestateId + " : " + errorMessage},
       {
         status: 500,
       }
