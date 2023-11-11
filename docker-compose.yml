@@ -41,4 +41,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 20
+    volumes:
+        - my-datavolume:/var/lib/postgresql/data
+        
+volumes:
+  my-datavolume:
       
