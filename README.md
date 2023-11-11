@@ -82,22 +82,34 @@ It will redirect you to the add page:
 
 ## UniTests
 
-To run the django tests, 
+### Django unitests
+
 You need to sepcify in the env file that you want to use the dev environment by setting ENVIRONMENT=dev
 and you need to provide the credentials of your dev database:
 
 [.env](mysite/mysite/.env)
 
-
 Then you cd into the mysite folder:
 
  `cd mysite`
 
-And you run the commands :
+And you run the tests with commands :
 
  `python manage.py test`
 
 You can find the code of the tests here : [tests code](mysite/api/tests.py)
+
+### React unitests
+
+you cd into the my-react-app folder:
+
+ `cd my-react-app`
+
+And you run the tests with commands :
+
+ `npm test`
+
+You can find the code of the tests here : [tests code](my-react-app/src/pages/Products.test.js)
 
 ## References
 
