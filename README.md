@@ -36,7 +36,9 @@ We use as dependencies:
 
    `npm run start`
 
-5. Use the application on http://localhost:3000/
+## Use the application
+
+The url : ttp://localhost:3000/
 
 When you will first use the application you will need to log into the backend
 
@@ -78,11 +80,11 @@ It will redirect you to the add page:
 
 ![alt text](assets/createform_page.PNG)
 
-6. UniTests
+## UniTests
 
 To run the django tests, you need first to set the credentials of the test database you are using, in this file:
 
-[mysite/mysite/settings.py#94](settings.py#94)
+[settings.py#94](mysite/mysite/settings.py#94)
 
 Then you cd into the mysite folder:
 
@@ -92,7 +94,9 @@ And you run the commands :
 
  `python manage.py test`
 
-You can find the code of the tests here : [this sample](mysite/api/tests.py)
+You can find the code of the tests here : [tests code](mysite/api/tests.py)
 
-7. For the css I would like to thank mattc0m
+## References
+
+For the css I would like to thank mattc0m
 You can find his work on this link : https://codepen.io/mattc0m/pen/rNdMjKX
