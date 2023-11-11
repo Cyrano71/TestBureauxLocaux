@@ -1,33 +1,29 @@
 from django.http import HttpResponse
-from .models import RealEstate
-import json 
+from .models import RealEstate, UserAuth
+from datetime import datetime
+from datetime import timezone
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-
-custom_token = None
-is_login = False
+import re
+import json
 
 def guard(request):
-    if not is_login:
-        return True
-    if "HTTP_AUTHORIZATION" not in request.META or request.META["HTTP_AUTHORIZATION"] != "Bearer " + custom_token:
-        return True
-    return False
-
-import datetime 
-  
-def serialize_datetime(obj): 
-    if isinstance(obj, datetime.datetime): 
-        return obj.isoformat() 
-    raise TypeError("Type not serializable") 
-
-def index(request):
-    if guard(request):
-        return HttpResponse('Unauthorized', status=401)
-    latest_realstate_list = RealEstate.objects.order_by("-pub_date")
-    data = list(latest_realstate_list.values('id', 'title')) 
-    return HttpResponse(json.dumps(data), content_type="application/json")
+    if "HTTP_AUTHORIZATION" not in request.META:
+        return (False, "No authorization header in the request")
+    x = re.search("Bearer (.*)", request.META["HTTP_AUTHORIZATION"])
+    if not x:
+        return (False, "authorization header should be of the form : Bearer \{yourtoken\}")
+    try: 
+          person = UserAuth.objects.get(token=x.group(1)) 
+    except Exception: 
+        return (False, "unknown token")
     
+    now = datetime.now(timezone.utc)
+    if now > person.expiration_date:
+        return (False, "your token is expired, please log in to get a new one")
+
+    return (True, "")
+
 def login(request):
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
@@ -35,29 +31,46 @@ def login(request):
     password = body['password']
     user = authenticate(username=username, password=password)
     if user is not None:
-        global is_login
-        is_login = True
         refresh = RefreshToken.for_user(user)
-        global custom_token
-        custom_token = str(refresh.access_token)
-        response = HttpResponse(json.dumps({"token" : custom_token}), content_type="application/json")
+        expiration = datetime.utcfromtimestamp(refresh.payload["exp"])
+        token = str(refresh.access_token)
+        person = UserAuth.create(refresh.payload['user_id'], 
+                               token, 
+                               expiration)
+        person.save()
+        response = HttpResponse(json.dumps({"token" : token}), content_type="application/json")
     else:
-        response = HttpResponse('Unauthorized', status=401)
-    return response
+        response = HttpResponse('Failed to authenticate the user: wrong username or password', status=401)
+    return response  
+
+def index(request):
+    (is_valid, error_message) = guard(request)
+    if not is_valid:
+        return HttpResponse('Unauthorized : ' + error_message, status=401)
+    latest_realstate_list = RealEstate.objects.order_by("-pub_date")
+    data = list(latest_realstate_list.values('id', 'title')) 
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
+def serialize_datetime(obj): 
+    if isinstance(obj, datetime): 
+        return obj.isoformat() 
+    raise TypeError("Type not serializable") 
 
 def detail(request, pk):
-    if guard(request):
-        return HttpResponse('Unauthorized', status=401)
+    (is_valid, error_message) = guard(request)
+    if not is_valid:
+        return HttpResponse('Unauthorized : ' + error_message, status=401)
     data = RealEstate.objects.filter(pk=pk)
     return HttpResponse(json.dumps(list(data.values()),default=serialize_datetime), content_type="application/json")
 
 def update_realstate(request, pk):
-    if guard(request):
-        return HttpResponse('Unauthorized', status=401)
+    (is_valid, error_message) = guard(request)
+    if not is_valid:
+        return HttpResponse('Unauthorized : ' + error_message, status=401)
     try: 
         realstate = RealEstate.objects.get(pk=pk) 
     except Exception: 
-        return HttpResponse({'message': 'The Reak state does not exist'}, status=400) 
+        return HttpResponse({'message': 'The Real estate does not exist'}, status=400) 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
     for key in body:
@@ -66,8 +79,9 @@ def update_realstate(request, pk):
     return HttpResponse("Success") 
  
 def create_realstate(request):
-    if guard(request):
-        return HttpResponse('Unauthorized', status=401)
+    (is_valid, error_message) = guard(request)
+    if not is_valid:
+        return HttpResponse('Unauthorized : ' + error_message, status=401)
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
     print(body)
