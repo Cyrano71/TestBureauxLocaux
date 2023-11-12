@@ -133,7 +133,10 @@ You can find the code of the tests here : [tests code](backend/api/tests.py)
 
  `npm test`
 
-You can find the code of the tests here : [tests code](frontend/src/pages/Products.test.js)
+You can find the code of the tests here : 
+
+[tests code](frontend/src/pages/Products.test.js)
+[tests code](frontend/src/App.test.js)
 
 ## References
 
