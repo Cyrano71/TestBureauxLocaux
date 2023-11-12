@@ -135,8 +135,9 @@ You can find the code of the tests here : [tests code](backend/api/tests.py)
 
 You can find the code of the tests here : 
 
-[tests code](frontend/src/pages/Products.test.js)
-[tests code](frontend/src/App.test.js)
+[Items tests file](frontend/src/pages/Items.test.js)
+
+[App test file](frontend/src/App.test.js)
 
 ## References
 
