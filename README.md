@@ -61,7 +61,7 @@ that will be stored in the local storage of your browser:
 
 ![alt text](assets/unauthorized.PNG)
 
-5. With this token you will have access to the list of real estate items in the postgres database:
+5. With this token you will have access to the list of real estate items in the postgres database. You have also a search bar that will filter the description :
 
 ![alt text](assets/realestate_page.PNG)
 
