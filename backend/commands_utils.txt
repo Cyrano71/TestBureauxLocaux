@@ -10,29 +10,16 @@ python manage.py shell
 user = User.objects.create_user("jehan", "lennon@thebeatles.com", "1234")
 
 Index:
-curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/api/
-curl http://127.0.0.1:8000/api/
+curl http://127.0.0.1:8000/api/realstates/
 
 Details:
-curl -H "Authorization: Bearer my_token" http://127.0.0.1:8000/api/1/
-
-Login:
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"username":"jehan","password":"1234"}' \
-  http://127.0.0.1:8000/api/login
-
-curl --header "Content-Type: application/json" --request POST --data '{"username":"jehan","password":"1234"}' http://127.0.0.1:8000/api/login
+curl http://127.0.0.1:8000/api/realstates/1/
 
 Update:
-
-curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request PUT --data '{"title":"Bureaux privatifs 23 m2 wesh !"}' http://127.0.0.1:8000/api/1/update/
-
-curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !"}' "http://127.0.0.1:8000/api/1/update/"
+curl -X PUT -H "Content-Type: application/json" -d '{"title":"Bureaux privatifs 23 m2 wesh !", "addresse": "5 Rue Santeuil, 44000 Nantes","transaction_type": "Rental","realty_type": "Office","pub_date": "2023-03-16T17:41:28+00:00"}' "http://127.0.0.1:8000/api/realstates/1/"
 
 Creation:
-
-curl -H "Authorization: Bearer my_token" --header "Content-Type: application/json" --request POST --data '{"title":"Nouveau Bureaux privatifs 235 m2", "addresse": "Aulnay Sous Bois", "transaction_type": "rental", "realty_type": "office", "pub_date": "2023-03-19T18:41:28+00:00"}' http://127.0.0.1:8000/api/create/
+curl --header "Content-Type: application/json" --request POST --data '{"title":"Nouveau Bureaux privatifs 235 m2", "addresse": "Aulnay Sous Bois", "transaction_type": "Rental", "realty_type": "Office", "pub_date": "2023-03-19T18:41:28+00:00"}' http://127.0.0.1:8000/api/realstates/
 
 DOCKER:
 docker compose up
