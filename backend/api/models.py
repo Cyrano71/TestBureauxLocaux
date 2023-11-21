@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-from rest_framework import serializers
 
 RENTAL = "Rental"
 SALE = "Sale"
@@ -20,19 +18,4 @@ class RealEstate(models.Model):
         max_length=200, choices=TRANSACTION_TYPES)
     realty_type = models.CharField(max_length=200, choices=REALTY_TYPES)
     pub_date = models.DateTimeField("date published")
-
-
-class RealEstateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RealEstate
-        fields = ['id', 'title', 'addresse', 'transaction_type', 'realty_type', 'pub_date']
-
-
-class UserAuth(models.Model):
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
-    token = models.CharField(max_length=228)
-    expiration_date = models.DateTimeField()
+    owner = models.ForeignKey('auth.User', related_name='real_estates', on_delete=models.CASCADE)

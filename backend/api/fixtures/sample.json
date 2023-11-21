@@ -16,7 +16,8 @@
         "addresse": "5 Rue Santeuil, 44000 Nantes",
         "transaction_type": "Rental",
         "realty_type": "Office",
-        "pub_date": "2023-03-16T17:41:28+00:00"
+        "pub_date": "2023-03-16T17:41:28+00:00",
+        "owner_id": 2
       }
     },
     {
@@ -27,7 +28,8 @@
         "addresse": "32 Avenue Kléber, 75116 Paris",
         "transaction_type": "Sale",
         "realty_type": "Office",
-        "pub_date": "2023-03-16T17:41:28+00:00"
+        "pub_date": "2023-03-16T17:41:28+00:00",
+        "owner_id": 2
       }
     },
     {
@@ -38,7 +40,8 @@
         "addresse": "94300 Vincennes",
         "transaction_type": "Rental",
         "realty_type": "Coworking",
-        "pub_date": "2023-03-16T18:41:28+00:00"
+        "pub_date": "2023-03-16T18:41:28+00:00",
+        "owner_id": 2
       }
     },
     {
@@ -49,7 +52,8 @@
         "addresse": "56850 Caudan",
         "transaction_type": "Rental",
         "realty_type": "Warehouse",
-        "pub_date": "2023-03-17T18:41:28+00:00"
+        "pub_date": "2023-03-17T18:41:28+00:00",
+        "owner_id": 2
       }
     }
   ]
