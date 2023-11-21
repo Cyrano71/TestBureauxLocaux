@@ -2,19 +2,54 @@
 
 ## Installation method
 
-1. Clone this Repo
+1. On Ec2 instances : 
+
+```
+sudo su
+yum update -y
+amazon-linux-extras install docker -y
+service docker start
+usermod -a -G docker ec2-user
+chkconfig docker on
+
+yum install -y git
+mkdir -p /usr/local/lib/docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+```
+
+2. Clone this Repo
 
    `git clone https://github.com/Cyrano71/TestBureauxLocaux.git`
 
-2. cd into the TestBureauxLocaux folder:
+3. cd into the TestBureauxLocaux folder:
 
    `cd TestBureauxLocaux`
-   
-2. deploy the backend by using the docker command :
+
+4. deploy the backend by using the docker command :
 
    `docker compose up`
    
-It will deploy a postgres database and a django rest api server.
+---
+**NOTE**
+
+I am using `docker compose` (with a SPACE) and not `docker-compose` (with a DASH)
+To understand the difference :
+https://stackoverflow.com/questions/66514436/difference-between-docker-compose-and-docker-compose
+
+If you are using `docker-compose up` (with a DASH) you will have this errors:
+```
+ERROR: The Compose file './docker-compose.yml' is invalid because:
+services.mydjangobackend.depends_on contains an invalid type, it should be an array
+```
+
+To use `docker compose` (with a SPACE) on your linux machine you need to install the docker compose plugin:
+
+https://stackoverflow.com/questions/72187612/installing-docker-compose-plugin-on-amazon-linux-2
+---
+
+
+The docker will deploy a postgres database and a django rest api server.
 For the django we use the following packages :
 - psycopg2
 - django-cors-headers
@@ -25,18 +60,18 @@ and will automatically create two users:
 - one admin user with username = "admin", password = "1234"
 - one normal user with  username = "jehan", password = "1234"
 
-3. in a new terminal, cd into the frontend react app folder
+5. in a new terminal, cd into the frontend react app folder
 
    `cd frontend`
 
-4. install the dependencies
+6. install the dependencies
 
    `npm install`
    
 We use as dependencies:
 - react-router
 
-4. Start the frontend app
+7. Start the frontend app
 
    `npm run start`
 
