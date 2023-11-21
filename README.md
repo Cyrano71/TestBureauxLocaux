@@ -33,8 +33,9 @@ chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 ---
 **NOTE**
 
-I am using `docker compose` (with a SPACE) and not `docker-compose` (with a DASH)
+I am using `docker compose` (with a SPACE) and not `docker-compose` (with a DASH).
 To understand the difference :
+
 https://stackoverflow.com/questions/66514436/difference-between-docker-compose-and-docker-compose
 
 If you are using `docker-compose up` (with a DASH) you will have this errors:
@@ -46,6 +47,7 @@ services.mydjangobackend.depends_on contains an invalid type, it should be an ar
 To use `docker compose` (with a SPACE) on your linux machine you need to install the docker compose plugin:
 
 https://stackoverflow.com/questions/72187612/installing-docker-compose-plugin-on-amazon-linux-2
+
 ---
 
 
